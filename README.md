@@ -18,11 +18,15 @@ The dataset consists of four tables: facilities_info, education_info, address_in
   &nbsp;&nbsp; census_info: Census data related to educational institutions.
 
 * Tools Used: PostgreSQL, SQL (JOINs, CTEs, Window Functions)
-* Key Insights
- &nbsp;&nbsp; Educational facilities are unevenly distributed across cities and provinces
- &nbsp;&nbsp; Public and Catholic institutions dominate the dataset
- &nbsp;&nbsp; Integrated multi-level education facilities are limited
- &nbsp;&nbsp; Specialized institutions (e.g., language + senior secondary) are less common
+*  Key Insights:
+   
+ &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Educational facilities are unevenly distributed across cities and provinces.
+
+ &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Public and Catholic institutions dominate the dataset.
+ 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Integrated multi-level education facilities are limited.
+ 
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Specialized institutions (e.g., language + senior secondary) are less common.
 
 ## Analysis & Insights
 
