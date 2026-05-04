@@ -18,6 +18,11 @@ The dataset consists of four tables: facilities_info, education_info, address_in
   &nbsp;&nbsp; census_info: Census data related to educational institutions.
 
 * Tools Used: PostgreSQL, SQL (JOINs, CTEs, Window Functions)
+* Key Insights
+ &nbsp;&nbsp; Educational facilities are unevenly distributed across cities and provinces
+ &nbsp;&nbsp; Public and Catholic institutions dominate the dataset
+ &nbsp;&nbsp; Integrated multi-level education facilities are limited
+ &nbsp;&nbsp; Specialized institutions (e.g., language + senior secondary) are less common
 
 ## Analysis & Insights
 
@@ -33,7 +38,7 @@ The dataset consists of four tables: facilities_info, education_info, address_in
 
 ![image](https://github.com/user-attachments/assets/a9d18f24-6b5a-495f-92bb-a83316e85332)
 
-Insight: This insight is valuable for school boards in determining whether additional Catholic schools need to be established in underserved areas.
+Insight: The results show a concentration of Catholic schools in specific cities such as Kitchener and Thunder Bay, suggesting uneven distribution across regions and potential gaps in underserved areas.
 
 ### Query 2: Number of Facilities in Each City
     SELECT ad.city, COUNT(fac.facility_id) AS facility_count
@@ -44,7 +49,7 @@ Insight: This insight is valuable for school boards in determining whether addit
 ![image](https://github.com/user-attachments/assets/84b3d22d-6a3f-4b96-8738-ab15b1f1cd7a)
 
 
-Insight: If a city has a low number of facilities despite a growing population, it signals the need for new schools. Education authorities can prioritize funding for new schools in those areas. Real estate developers may also use this data to invest in areas needing educational facilities, benefiting community planning.
+Insight: Most cities have a low number of educational facilities, while a few cities such as Thunder Bay show higher concentrations, highlighting disparities in facility distribution across regions.
 
 ### Query 3: Education Levels Offered by Facilities
     SELECT
@@ -58,7 +63,7 @@ Insight: If a city has a low number of facilities despite a growing population, 
 
 ![image](https://github.com/user-attachments/assets/1478b3f6-e061-4f54-ae53-cb9ff90eb88f)
 
-Insight: Understanding which education levels are most or least available can help education ministries allocate funding for new schools or curriculum expansion. This query helps identify gaps in early childhood education or secondary schooling across regions.
+Insight: Most facilities focus on elementary and secondary education, while early childhood and official language programs are less represented, suggesting limited availability of specialized education services.
 
 ### Query 4: Facilities in Each Metropolitan Area (Sorted by Count)
     SELECT census_metropolitan_area_name, COUNT(census_id) AS count_census
@@ -69,7 +74,7 @@ Insight: Understanding which education levels are most or least available can he
 
 ![image](https://github.com/user-attachments/assets/4474a6d5-d86b-4dad-997c-0ba999998389)
 
-Insight: Large metropolitan areas require more schools to support growing populations. This data can support budget reallocation or expansion programs to bring equity in education access.
+Insight: Educational facilities are concentrated in a few metropolitan areas like Toronto and London, while most regions have lower counts, indicating disparities in regional access.
 
 ### Query 5: Facility Details in Toronto Census Subdivision
     SELECT fac.facility_id, fac.facility_name, fac.facility_type, ad.address, ad.city, ad.province, ad.postal_code
@@ -80,6 +85,8 @@ Insight: Large metropolitan areas require more schools to support growing popula
 
 ![image](https://github.com/user-attachments/assets/4f42ddc3-d3dd-403a-b7fb-a14a452b123b)
 
+Insight: Toronto shows a high concentration and diversity of educational facilities, reflecting its role as a major urban education hub.
+
 ### Query 6: Facility Types with at Least Five Facilities
     SELECT facility_type, COUNT(facility_id) AS facility_count
     FROM facility_info
@@ -87,6 +94,8 @@ Insight: Large metropolitan areas require more schools to support growing popula
     HAVING COUNT(facility_id) >= 5;
 
 ![image](https://github.com/user-attachments/assets/d343e01e-6269-4485-a681-941048aebc91)
+
+Insight: Public and Catholic schools represent the majority of facilities, while private and provincial institutions are less prevalent, indicating a stronger presence of publicly funded education systems.
 
 ### Query 7: Facility Type Count Categorization (High, Medium, Low)
     WITH facility_province_counts AS (
@@ -105,7 +114,7 @@ Insight: Large metropolitan areas require more schools to support growing popula
 
 ![image](https://github.com/user-attachments/assets/79c80f12-334a-4eda-83e7-26fd6ae2272a)
 
-Insight: Provinces with low facility counts may see higher dropout rates or longer student commute times. Addressing this can improve educational outcomes, leading to better employment rates and economic growth in underdeveloped regions.
+Insight: Facility counts vary significantly by province, with Ontario showing high concentrations across multiple facility types, while other provinces fall into medium or low categories, highlighting regional disparities.
 
 ### Query 8: Facilities Offering a Combination of Education Levels
     SELECT f.facility_id, f.facility_name, f.facility_type, f.authority_name, e.early_childhood_education_status, e.kindergarten_status, e.elementary_status, e.junior_secondary_status
@@ -119,7 +128,7 @@ Insight: Provinces with low facility counts may see higher dropout rates or long
 
 ![image](https://github.com/user-attachments/assets/334be59d-988c-4eb8-bb1d-3bccd4e6134b)
 
-Insight: Identifies facilities that provide a full range of education from early childhood to junior secondary, showing integrated institutions.
+Insight: Facilities offering multiple education levels are relatively limited, suggesting that most institutions specialize in specific stages rather than providing a full education pathway.
 
 ### Query 9: Facilities Supporting Senior Secondary and Official Language Minority Schools
     CREATE VIEW facility_education_view AS
@@ -132,6 +141,4 @@ Insight: Identifies facilities that provide a full range of education from early
 
 ![image](https://github.com/user-attachments/assets/fc192b28-6acb-42e8-94b2-6f0699e09e78)
 
-Insight: Official language minority schools help support bilingual education. This view helps to track their presence across provinces to ensure compliance with language policies.
-
-
+Insight: Schools offering both senior secondary education and official language minority programs are relatively few, highlighting the niche presence of institutions supporting bilingual and advanced-level education.
