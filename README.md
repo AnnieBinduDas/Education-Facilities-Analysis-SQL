@@ -1,7 +1,7 @@
 # Education-Facilities-Analysis
 
 ## Overview
-In this analysis, we examine education facilities in Canada using SQL queries on open data from Statistics Canada. The dataset, made publicly available by different levels of government, provides detailed information on educational institutions. Using SQL, we extract, transform, and analyze this data to uncover meaningful insights.
+This project analyzes education facility data across Canada using SQL to uncover regional disparities in school distribution, enrolment, and resource allocation.
 
 The dataset consists of four tables: facilities_info, education_info, address_info, and census_info. These tables contain comprehensive details about educational facilities, the levels of education offered, geographic locations, and census-related information. SQL's powerful capabilities - such as data manipulation, aggregation, filtering, and joins—allow us to explore trends and distributions within the Canadian education landscape.
 
